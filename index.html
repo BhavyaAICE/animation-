@@ -1,0 +1,589 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>Engineering in Motion — Mechanical Precision Portfolio</title>
+  <meta name="description" content="A premium digital engineering visualization experiment. Scroll-driven mechanical animation from assembled to exploded engineering view." />
+  <meta name="keywords" content="mechanical engineering, 3D animation, scroll animation, engineering visualization, precision engineering" />
+
+  <!-- Fonts -->
+  <link rel="preconnect" href="https://fonts.googleapis.com" />
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+  <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700;800;900&family=Space+Grotesk:wght@300;400;500;600;700&display=swap" rel="stylesheet" />
+
+  <!-- GSAP -->
+  <script src="https://cdnjs.cloudflare.com/ajax/libs/gsap/3.12.5/gsap.min.js" defer></script>
+  <script src="https://cdnjs.cloudflare.com/ajax/libs/gsap/3.12.5/ScrollTrigger.min.js" defer></script>
+
+  <link rel="stylesheet" href="style.css" />
+</head>
+<body>
+
+  <!-- Grain overlay -->
+  <div class="grain-overlay" aria-hidden="true"></div>
+
+  <!-- Navigation -->
+  <nav class="nav" id="nav">
+    <div class="nav-logo">
+      <span class="logo-mark">⬡</span>
+      <span class="logo-text">PRECISION<span class="logo-accent">MFG</span></span>
+    </div>
+    <div class="nav-links">
+      <a href="#concept" class="nav-link">Concept</a>
+      <a href="#process" class="nav-link">Process</a>
+      <a href="#materials" class="nav-link">Materials</a>
+      <a href="#breakdown" class="nav-link">Animation</a>
+      <a href="#performance" class="nav-link">Performance</a>
+    </div>
+    <div class="nav-cta">
+      <a href="#concept" class="btn-nav">Explore</a>
+    </div>
+  </nav>
+
+  <!-- ═══════════════════════════════════════════
+       HERO — Scroll-Driven Canvas Animation
+  ════════════════════════════════════════════ -->
+  <section class="hero-wrapper" id="hero-wrapper">
+    <div class="hero-sticky" id="hero-sticky">
+
+      <!-- Canvas for frame animation -->
+      <canvas id="animation-canvas" aria-label="Mechanical engineering animation — assembled to exploded view"></canvas>
+
+      <!-- Radial vignette -->
+      <div class="vignette" aria-hidden="true"></div>
+
+      <!-- Bottom shadow -->
+      <div class="object-shadow" aria-hidden="true"></div>
+
+      <!-- Hero text overlay -->
+      <div class="hero-content" id="hero-content">
+        <div class="hero-badge" id="hero-badge">
+          <span class="badge-dot"></span>
+          <span>Engineering Visualization — 2024</span>
+        </div>
+        <h1 class="hero-title" id="hero-title">
+          Engineering<br />
+          <em>in Motion.</em>
+        </h1>
+        <p class="hero-sub" id="hero-sub">
+          A study in mechanical precision<br />and digital storytelling.
+        </p>
+        <div class="hero-cta" id="hero-cta">
+          <a href="#concept" class="btn-primary" id="cta-btn">
+            <span>Explore the Process</span>
+            <svg width="16" height="16" viewBox="0 0 16 16" fill="none" aria-hidden="true">
+              <path d="M3 8h10M9 4l4 4-4 4" stroke="currentColor" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round"/>
+            </svg>
+          </a>
+        </div>
+
+        <!-- Scroll indicator -->
+        <div class="scroll-indicator" id="scroll-indicator">
+          <div class="scroll-line"></div>
+          <span>SCROLL</span>
+        </div>
+      </div>
+
+      <!-- Frame counter (top right) -->
+      <div class="frame-counter" id="frame-counter" aria-live="polite">
+        <span class="frame-label">FRAME</span>
+        <span class="frame-num" id="frame-num">001</span>
+        <span class="frame-sep">/</span>
+        <span class="frame-total">240</span>
+      </div>
+
+      <!-- Progress bar -->
+      <div class="progress-bar-wrap" aria-hidden="true">
+        <div class="progress-bar" id="progress-bar"></div>
+      </div>
+
+    </div>
+  </section>
+  <!-- end hero -->
+
+  <!-- Main content wrapper -->
+  <main class="main-content">
+
+    <!-- ═══════════════════════════════════════════
+         SECTION 1: Concept & Design
+    ════════════════════════════════════════════ -->
+    <section class="section" id="concept">
+      <div class="section-inner">
+        <div class="section-tag">01 — Concept & Design</div>
+        <div class="concept-split">
+          <div class="concept-visual">
+            <div class="concept-img-wrap">
+              <img
+                src="gun/frame_0120.png"
+                alt="Mechanical assembly — mid-explode render"
+                class="concept-img"
+                loading="lazy"
+              />
+              <div class="img-glow"></div>
+            </div>
+            <div class="concept-stat-row">
+              <div class="cstat">
+                <span class="cstat-num">240</span>
+                <span class="cstat-label">Render Frames</span>
+              </div>
+              <div class="cstat">
+                <span class="cstat-num">4K</span>
+                <span class="cstat-label">Source Resolution</span>
+              </div>
+              <div class="cstat">
+                <span class="cstat-num">60fps</span>
+                <span class="cstat-label">Playback Target</span>
+              </div>
+            </div>
+          </div>
+          <div class="concept-text">
+            <h2 class="section-title">A Digital Engineering<br /><em>Visualization Experiment</em></h2>
+            <p class="body-text">
+              This project explores the intersection of precision mechanical engineering and modern web technology. 
+              Starting from a photorealistic 3D render sequence, we translate a complex mechanical assembly — 
+              from its unified, assembled state — through a full exploded engineering visualization.
+            </p>
+            <p class="body-text">
+              Every scroll pixel is mapped to an animation frame, creating a direct, tactile connection 
+              between the user and the machinery. The result is an experience that feels physical — 
+              as though you are physically pulling the mechanism apart with your hands.
+            </p>
+            <div class="feature-list">
+              <div class="feature-item">
+                <span class="feature-icon">◈</span>
+                <div>
+                  <strong>Photorealistic PBR Rendering</strong>
+                  <p>Subsurface scattering, micro-surface roughness, and HDR lighting simulation</p>
+                </div>
+              </div>
+              <div class="feature-item">
+                <span class="feature-icon">◈</span>
+                <div>
+                  <strong>Scroll-Synchronized Playback</strong>
+                  <p>Frame-perfect synchronization between scroll position and animation state</p>
+                </div>
+              </div>
+              <div class="feature-item">
+                <span class="feature-icon">◈</span>
+                <div>
+                  <strong>Canvas-Based Rendering</strong>
+                  <p>Hardware-accelerated compositing for buttery 60fps performance</p>
+                </div>
+              </div>
+            </div>
+          </div>
+        </div>
+      </div>
+    </section>
+
+    <div class="section-divider"></div>
+
+    <!-- ═══════════════════════════════════════════
+         SECTION 2: Technical Process
+    ════════════════════════════════════════════ -->
+    <section class="section" id="process">
+      <div class="section-inner">
+        <div class="section-tag">02 — Technical Process</div>
+        <h2 class="section-title centered">The Engineering<br /><em>Behind the Experience</em></h2>
+        <p class="body-text centered muted" style="max-width:600px;margin:0 auto 4rem;">
+          Four layers of technical architecture work in concert to produce seamless, performant scroll animation.
+        </p>
+        <div class="process-grid">
+          <div class="glass-card">
+            <div class="card-icon">
+              <svg width="28" height="28" viewBox="0 0 28 28" fill="none" aria-hidden="true">
+                <rect x="2" y="2" width="10" height="10" rx="2" stroke="currentColor" stroke-width="1.5"/>
+                <rect x="16" y="2" width="10" height="10" rx="2" stroke="currentColor" stroke-width="1.5"/>
+                <rect x="2" y="16" width="10" height="10" rx="2" stroke="currentColor" stroke-width="1.5"/>
+                <rect x="16" y="16" width="10" height="10" rx="2" stroke="currentColor" stroke-width="1.5"/>
+              </svg>
+            </div>
+            <h3>Frame Extraction</h3>
+            <p>240 sequential PNG frames exported from a 3D render at consistent camera angle, lighting, and composition. Each frame is 1920×1080px, losslessly composited against a transparent background.</p>
+            <div class="card-tag">BLENDER → PNG</div>
+          </div>
+          <div class="glass-card">
+            <div class="card-icon">
+              <svg width="28" height="28" viewBox="0 0 28 28" fill="none" aria-hidden="true">
+                <path d="M4 14h20M4 14l6-6M4 14l6 6" stroke="currentColor" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round"/>
+                <circle cx="20" cy="8" r="3" stroke="currentColor" stroke-width="1.5"/>
+                <circle cx="20" cy="20" r="3" stroke="currentColor" stroke-width="1.5"/>
+              </svg>
+            </div>
+            <h3>Scroll Animation Logic</h3>
+            <p>GSAP ScrollTrigger pins the hero section for the full scroll duration. The scroll progress (0–1) maps linearly to the frame index. <code>scrub: true</code> ties scroll velocity directly to playback rate.</p>
+            <div class="card-tag">GSAP SCROLLTRIGGER</div>
+          </div>
+          <div class="glass-card">
+            <div class="card-icon">
+              <svg width="28" height="28" viewBox="0 0 28 28" fill="none" aria-hidden="true">
+                <polygon points="14,4 24,10 24,18 14,24 4,18 4,10" stroke="currentColor" stroke-width="1.5" fill="none"/>
+                <circle cx="14" cy="14" r="4" stroke="currentColor" stroke-width="1.5"/>
+              </svg>
+            </div>
+            <h3>Canvas Rendering</h3>
+            <p>Each frame is drawn onto an HTML5 <code>&lt;canvas&gt;</code> element using <code>drawImage()</code>. The canvas is sized to the viewport with <code>object-fit: contain</code> logic, preserving aspect ratio without layout shifts.</p>
+            <div class="card-tag">HTML5 CANVAS API</div>
+          </div>
+          <div class="glass-card">
+            <div class="card-icon">
+              <svg width="28" height="28" viewBox="0 0 28 28" fill="none" aria-hidden="true">
+                <path d="M14 4v6M14 18v6M4 14h6M18 14h6" stroke="currentColor" stroke-width="1.5" stroke-linecap="round"/>
+                <circle cx="14" cy="14" r="5" stroke="currentColor" stroke-width="1.5"/>
+              </svg>
+            </div>
+            <h3>Performance Optimization</h3>
+            <p>First 20 frames preload immediately on page load. Remaining frames lazy-load in the background using <code>Image()</code> objects. An <code>IntersectionObserver</code> defers offscreen section assets.</p>
+            <div class="card-tag">PROGRESSIVE LOADING</div>
+          </div>
+          <div class="glass-card">
+            <div class="card-icon">
+              <svg width="28" height="28" viewBox="0 0 28 28" fill="none" aria-hidden="true">
+                <rect x="3" y="6" width="22" height="16" rx="3" stroke="currentColor" stroke-width="1.5"/>
+                <path d="M10 12l4 3 4-3" stroke="currentColor" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round"/>
+              </svg>
+            </div>
+            <h3>Preloading Strategy</h3>
+            <p>Critical frames (1–20) are preloaded synchronously before the scroll listener activates. A loading overlay masks the canvas until &gt;80% of frames are decoded, eliminating blank frame flashes.</p>
+            <div class="card-tag">PRIORITY LOADING</div>
+          </div>
+          <div class="glass-card">
+            <div class="card-icon">
+              <svg width="28" height="28" viewBox="0 0 28 28" fill="none" aria-hidden="true">
+                <path d="M6 22L12 10L18 16L22 6" stroke="currentColor" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round"/>
+              </svg>
+            </div>
+            <h3>Frame Index Math</h3>
+            <p>Progress ratio <code>p ∈ [0,1]</code> maps to frame index via <code>Math.round(p × (totalFrames - 1))</code>. Clamped to valid range. Only redraws when the target frame differs from current, avoiding redundant GPU work.</p>
+            <div class="card-tag">OPTIMIZED INDEXING</div>
+          </div>
+        </div>
+      </div>
+    </section>
+
+    <div class="section-divider"></div>
+
+    <!-- ═══════════════════════════════════════════
+         SECTION 3: Materials & Rendering
+    ════════════════════════════════════════════ -->
+    <section class="section" id="materials">
+      <div class="section-inner">
+        <div class="section-tag">03 — Materials & Rendering</div>
+        <h2 class="section-title">Lighting Realism<br /><em>&amp; PBR Materials</em></h2>
+        <p class="body-text muted" style="max-width:560px;margin-bottom:3rem;">
+          Each component features physically-based rendering materials — tuned roughness, metallic reflectance, 
+          and area-light rigs for studio-quality output.
+        </p>
+        <div class="materials-grid">
+          <div class="mat-card mat-large">
+            <img src="gun/frame_0230.png" alt="Exploded engineering view — fully separated components" class="mat-img" loading="lazy" />
+            <div class="mat-label">
+              <span class="mat-tag">Exploded State</span>
+              <p>Frame 230 — Full component separation with ambient occlusion contact shadows</p>
+            </div>
+          </div>
+          <div class="mat-card">
+            <img src="gun/frame_0001.png" alt="Assembled engineering view — unified mechanism" class="mat-img" loading="lazy" />
+            <div class="mat-label">
+              <span class="mat-tag">Assembled State</span>
+              <p>Frame 001 — High-gloss metallic surface treatment</p>
+            </div>
+          </div>
+          <div class="mat-card">
+            <img src="gun/frame_0060.png" alt="Mid-explosion — early component separation" class="mat-img" loading="lazy" />
+            <div class="mat-label">
+              <span class="mat-tag">Transition — 25%</span>
+              <p>Frame 060 — Soft rim lighting reveals component geometry</p>
+            </div>
+          </div>
+          <div class="mat-card">
+            <img src="gun/frame_0120.png" alt="Mid-explosion — halfway through animation" class="mat-img" loading="lazy" />
+            <div class="mat-label">
+              <span class="mat-tag">Transition — 50%</span>
+              <p>Frame 120 — Internal structures become visible</p>
+            </div>
+          </div>
+          <div class="mat-card">
+            <img src="gun/frame_0180.png" alt="Late explosion — most components separated" class="mat-img" loading="lazy" />
+            <div class="mat-label">
+              <span class="mat-tag">Transition — 75%</span>
+              <p>Frame 180 — Fine mechanical details at maximum clarity</p>
+            </div>
+          </div>
+        </div>
+
+        <div class="material-specs">
+          <div class="spec-row">
+            <div class="spec-item">
+              <span class="spec-label">Surface Finish</span>
+              <span class="spec-value">Brushed Stainless Steel</span>
+            </div>
+            <div class="spec-item">
+              <span class="spec-label">Roughness</span>
+              <span class="spec-value">0.12 – 0.45 varies</span>
+            </div>
+            <div class="spec-item">
+              <span class="spec-label">Metallic Mask</span>
+              <span class="spec-value">0.85 – 1.0</span>
+            </div>
+            <div class="spec-item">
+              <span class="spec-label">Lighting Rig</span>
+              <span class="spec-value">3-point area + HDRI</span>
+            </div>
+            <div class="spec-item">
+              <span class="spec-label">Render Engine</span>
+              <span class="spec-value">Cycles / EEVEE</span>
+            </div>
+            <div class="spec-item">
+              <span class="spec-label">Output Format</span>
+              <span class="spec-value">PNG 24-bit RGBA</span>
+            </div>
+          </div>
+        </div>
+      </div>
+    </section>
+
+    <div class="section-divider"></div>
+
+    <!-- ═══════════════════════════════════════════
+         SECTION 4: Animation Breakdown
+    ════════════════════════════════════════════ -->
+    <section class="section" id="breakdown">
+      <div class="section-inner">
+        <div class="section-tag">04 — Animation Breakdown</div>
+        <div class="breakdown-layout">
+          <div class="breakdown-text">
+            <h2 class="section-title">How Scroll<br /><em>Drives Every Frame</em></h2>
+            <p class="body-text">
+              The animation system creates a direct, lossless mapping between scroll distance and frame index. 
+              There is no easing, no artificial timing — just pure mechanical correspondence between user input and visual output.
+            </p>
+
+            <div class="breakdown-steps">
+              <div class="breakdown-step">
+                <div class="step-num">01</div>
+                <div class="step-content">
+                  <h4>Pinning the Hero</h4>
+                  <p>ScrollTrigger pins <code>#hero-sticky</code> for <code>4000px</code> of virtual scroll distance. The viewport appears frozen while the user scrolls.</p>
+                </div>
+              </div>
+              <div class="breakdown-step">
+                <div class="step-num">02</div>
+                <div class="step-content">
+                  <h4>Progress Mapping</h4>
+                  <p>As the user scrolls through the pinned section, GSAP emits a <code>progress</code> value from <code>0.0</code> to <code>1.0</code> with <code>scrub: true</code>.</p>
+                </div>
+              </div>
+              <div class="breakdown-step">
+                <div class="step-num">03</div>
+                <div class="step-content">
+                  <h4>Frame Index Calculation</h4>
+                  <p>
+                    <code>frameIndex = Math.round(progress × (totalFrames − 1))</code><br />
+                    Clamped to <code>[0, 239]</code>. Only triggers redraw when index changes.
+                  </p>
+                </div>
+              </div>
+              <div class="breakdown-step">
+                <div class="step-num">04</div>
+                <div class="step-content">
+                  <h4>Canvas Draw Call</h4>
+                  <p>Target frame — if loaded — is drawn via <code>ctx.drawImage()</code>. Canvas is sized to maintain aspect ratio. Background cleared before each draw.</p>
+                </div>
+              </div>
+              <div class="breakdown-step">
+                <div class="step-num">05</div>
+                <div class="step-content">
+                  <h4>Text Fade Sequence</h4>
+                  <p>Hero text opacity and transform are animated based on scroll progress. Badge and title fade in early, CTA fades in at 15% progress.</p>
+                </div>
+              </div>
+            </div>
+          </div>
+
+          <div class="breakdown-visual">
+            <div class="code-block">
+              <div class="code-header">
+                <div class="code-dots">
+                  <span></span><span></span><span></span>
+                </div>
+                <span class="code-filename">animation.js</span>
+              </div>
+              <pre><code><span class="c-kw">const</span> <span class="c-fn">totalFrames</span> <span class="c-op">=</span> <span class="c-num">240</span>;
+<span class="c-kw">let</span> <span class="c-fn">currentFrame</span> <span class="c-op">=</span> <span class="c-num">0</span>;
+
+<span class="c-obj">ScrollTrigger</span>.<span class="c-fn">create</span>({
+  trigger<span class="c-op">:</span> <span class="c-str">'#hero-wrapper'</span>,
+  start<span class="c-op">:</span> <span class="c-str">'top top'</span>,
+  end<span class="c-op">:</span> <span class="c-str">'bottom bottom'</span>,
+  scrub<span class="c-op">:</span> <span class="c-num">true</span>,
+  pin<span class="c-op">:</span> <span class="c-str">'#hero-sticky'</span>,
+  onUpdate<span class="c-op">:</span> (self) <span class="c-op">=></span> {
+    <span class="c-kw">const</span> idx <span class="c-op">=</span> <span class="c-obj">Math</span>.<span class="c-fn">round</span>(
+      self.progress <span class="c-op">*</span> (totalFrames <span class="c-op">-</span> <span class="c-num">1</span>)
+    );
+    <span class="c-kw">if</span> (idx <span class="c-op">!==</span> currentFrame) {
+      currentFrame <span class="c-op">=</span> idx;
+      <span class="c-fn">drawFrame</span>(idx);
+    }
+  }
+});</code></pre>
+            </div>
+
+            <div class="formula-card">
+              <div class="formula-label">FRAME INDEX FORMULA</div>
+              <div class="formula">
+                <span class="formula-var">F</span>
+                <span class="formula-op">=</span>
+                <span class="formula-fn">round</span>
+                <span class="formula-paren">(</span>
+                <span class="formula-var">p</span>
+                <span class="formula-op">×</span>
+                <span class="formula-paren">(</span>
+                <span class="formula-num">N</span>
+                <span class="formula-op">−</span>
+                <span class="formula-num">1</span>
+                <span class="formula-paren">)</span>
+                <span class="formula-paren">)</span>
+              </div>
+              <div class="formula-legend">
+                <span><em>F</em> = Frame index</span>
+                <span><em>p</em> = Scroll progress [0,1]</span>
+                <span><em>N</em> = Total frames (240)</span>
+              </div>
+            </div>
+          </div>
+        </div>
+      </div>
+    </section>
+
+    <div class="section-divider"></div>
+
+    <!-- ═══════════════════════════════════════════
+         SECTION 5: Performance
+    ════════════════════════════════════════════ -->
+    <section class="section" id="performance">
+      <div class="section-inner">
+        <div class="section-tag">05 — Performance</div>
+        <h2 class="section-title centered">Built for<br /><em>Lighthouse 90+</em></h2>
+        <p class="body-text centered muted" style="max-width:540px;margin:0 auto 4rem;">
+          Every optimization decision targets both perceived and measured performance.
+        </p>
+
+        <div class="perf-grid">
+          <div class="perf-card">
+            <div class="perf-score" style="--score-color:#4ade80">60</div>
+            <div class="perf-unit">FPS</div>
+            <div class="perf-label">Scroll Performance</div>
+            <div class="perf-desc">requestAnimationFrame-synced redraws, no forced layout</div>
+          </div>
+          <div class="perf-card">
+            <div class="perf-score" style="--score-color:#60a5fa">~145<span style="font-size:1.2rem">KB</span></div>
+            <div class="perf-unit">AVG</div>
+            <div class="perf-label">Optimized Frame Size</div>
+            <div class="perf-desc">Compressed PNG frames averaging 145KB per image</div>
+          </div>
+          <div class="perf-card">
+            <div class="perf-score" style="--score-color:#f59e0b">20</div>
+            <div class="perf-unit">FRAMES</div>
+            <div class="perf-label">Critical Preload</div>
+            <div class="perf-desc">First 20 frames preloaded before scroll activates</div>
+          </div>
+          <div class="perf-card">
+            <div class="perf-score" style="--score-color:#a78bfa">0</div>
+            <div class="perf-unit">CLS</div>
+            <div class="perf-label">Layout Shift Score</div>
+            <div class="perf-desc">Canvas element avoids all cumulative layout shift</div>
+          </div>
+        </div>
+
+        <div class="perf-techniques">
+          <h3 class="perf-tech-title">Optimization Techniques</h3>
+          <div class="tech-row">
+            <div class="tech-item">
+              <div class="tech-dot active"></div>
+              <div>
+                <strong>Canvas vs CSS Background-image</strong>
+                <p>Canvas compositing bypasses CSS paint layers, enabling direct GPU texture uploads</p>
+              </div>
+            </div>
+            <div class="tech-item">
+              <div class="tech-dot active"></div>
+              <div>
+                <strong>Image Decode API</strong>
+                <p><code>img.decode()</code> called before drawing to prevent main-thread decode spikes</p>
+              </div>
+            </div>
+            <div class="tech-item">
+              <div class="tech-dot active"></div>
+              <div>
+                <strong>Dead Frame Skip</strong>
+                <p>Dirty-flag pattern skips <code>drawImage()</code> when target frame hasn't changed</p>
+              </div>
+            </div>
+            <div class="tech-item">
+              <div class="tech-dot active"></div>
+              <div>
+                <strong>Lazy Load Below Fold</strong>
+                <p>IntersectionObserver defers section images until 200px from viewport</p>
+              </div>
+            </div>
+            <div class="tech-item">
+              <div class="tech-dot active"></div>
+              <div>
+                <strong>Progressive Background Load</strong>
+                <p>Frames 21–240 load in background batches of 10 without blocking UI thread</p>
+              </div>
+            </div>
+            <div class="tech-item">
+              <div class="tech-dot active"></div>
+              <div>
+                <strong>will-change: transform</strong>
+                <p>Canvas promoted to its own compositor layer, preventing repaint cascade</p>
+              </div>
+            </div>
+          </div>
+        </div>
+      </div>
+    </section>
+
+    <!-- ═══════════════════════════════════════════
+         FOOTER
+    ════════════════════════════════════════════ -->
+    <footer class="footer">
+      <div class="footer-inner">
+        <div class="footer-top">
+          <div class="footer-brand">
+            <span class="logo-mark">⬡</span>
+            <span class="logo-text">PRECISION<span class="logo-accent">MFG</span></span>
+          </div>
+          <p class="footer-tagline">Engineering in Motion — A Digital Visualization Experiment</p>
+        </div>
+        <div class="footer-divider"></div>
+        <div class="footer-bottom">
+          <span class="footer-copy">© 2024 — All rights reserved</span>
+          <span class="footer-tech">Built with HTML5 Canvas · GSAP ScrollTrigger · Vanilla JS</span>
+        </div>
+      </div>
+    </footer>
+
+  </main>
+  <!-- end main -->
+
+  <!-- Loading screen -->
+  <div class="loader" id="loader">
+    <div class="loader-inner">
+      <div class="loader-logo">
+        <span class="logo-mark">⬡</span>
+      </div>
+      <div class="loader-bar-wrap">
+        <div class="loader-bar" id="loader-bar"></div>
+      </div>
+      <div class="loader-text" id="loader-text">Initializing frames — <span id="loader-pct">0</span>%</div>
+    </div>
+  </div>
+
+  <script src="main.js" defer></script>
+</body>
+</html>
